@@ -20,10 +20,10 @@ void error_handling(char *message);
 
 int main(int argc, char *argv[]){
     int sd;
+    int read_cnt, recv_size, file_size;
     FILE *fp;
     
     char buf[BUF_SIZE];
-    int read_cnt;
     struct sockaddr_in serv_adr;
     if(argc != 3){
         printf("Usage: %s <IP><port>\n", argv[0]);
@@ -44,7 +44,7 @@ int main(int argc, char *argv[]){
     while(1){
         printf("------ File list from server ------ \n");
         int file_count;
-        
+        file_size = 0;
         read(sd, &file_count, sizeof(file_count));
         for(int i = 0; i < file_count; i++ ){
             pkt_t recv_packet; 
@@ -63,11 +63,25 @@ int main(int argc, char *argv[]){
         }
         write(sd, str, strlen(str) + 1);
         
+        read(sd, &file_size, sizeof(file_size));
+        printf("%d\n", file_size);
         fp = fopen(str, "wb");
-        while((read_cnt = read(sd, buf, BUF_SIZE)) > 0)
-            fwrite((void*)buf, 1, read_cnt, fp);
         
-        printf("Received file data successfully\n");
+        recv_size = 0;
+        read_cnt = 0;
+        while((read_cnt < file_size)){
+        //Receive file data
+            read_cnt =  read(sd, buf, BUF_SIZE);
+            if(read_cnt < BUF_SIZE){
+                fwrite((void*)buf, 1, read_cnt, fp);
+                break;
+            }fwrite((void*)buf, 1, BUF_SIZE, fp);
+            recv_size += read_cnt;
+        }
+        
+        puts("Received file data");
+        write(sd, "Thank you", 10);
+
         fclose(fp);
     }
     close(sd);

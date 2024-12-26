@@ -91,14 +91,20 @@ int main(int argc, char *argv[]){
         printf("========================\n");
         //파일 이름 사이즈 struct 단위로 보내기 
         for(int i = 0; i < file_count; i++){
-        write(clnt_sd, &packet[i], sizeof(pkt_t));  
-        printf("Sending File Information: %s (size: %lu bytes)\n", packet[i].filename, packet[i].file_sz);
+            write(clnt_sd, &packet[i], sizeof(pkt_t));  
+            printf("Sending File Information: %s (size: %lu bytes)\n", packet[i].filename, packet[i].file_sz);
         }
         printf("========================\n");
 
         //클라이언트에서 요청한 파일 이름 읽기
         read(clnt_sd, clnt_request, BUF_SIZE);
+        int send_file_sz;
+        struct stat send_info;
+        stat(clnt_request, &send_info);
+        send_file_sz = send_info.st_size;
         
+        write(clnt_sd, &send_file_sz, sizeof(send_file_sz));
+
         if(!strcmp(clnt_request, "Q") || !strcmp(clnt_request, "q")){
             printf("Bye!\n");
             free(packet);
@@ -120,12 +126,14 @@ int main(int argc, char *argv[]){
                 break;
             }write(clnt_sd, buf, BUF_SIZE);
         }
-        printf("\nSended File %s successfully\n", clnt_request);
+        printf("\nSended File %s successfully!!\n", clnt_request);
+        
+        read(clnt_sd, buf, BUF_SIZE);
+        printf("Message from client: %s\n", buf);
+
         fclose(fp);
         free(packet);
     }
-    
-    shutdown(clnt_sd, SHUT_WR);
 
     close(clnt_sd);
     close(serv_sd);
