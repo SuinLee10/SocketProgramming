@@ -51,7 +51,7 @@
 ### 6. (2~5) 과정 반복
 - **설명:** 클라이언트가 나가기(Q) 를 선택하기 전까지 위의 과정을 반복합니다.
 - **결과 화면:**<br>
-<img src="https://github.com/SuinLee10/SocketProgramming/blob/master/hw1/hw1_result_img/server_result.png" width = 80%><br>
-<img src="https://github.com/SuinLee10/SocketProgramming/blob/master/hw1/hw1_result_img/client_result.png" width = 80%><br>
+<img src="https://github.com/SuinLee10/SocketProgramming/blob/master/hw1/hw1_result_img/server_result.png" width = 50%><br>
+<img src="https://github.com/SuinLee10/SocketProgramming/blob/master/hw1/hw1_result_img/client_result.png" width = 50%><br>
   <br><hr>
 
