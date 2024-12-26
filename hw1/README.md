@@ -47,7 +47,7 @@
 
 - **설명:** 실행 중인 디렉토리에 파일이 정상적으로 저장되고 클라이언트는 감사의 메시지를 서버에 전송합니다. 
     - **결과 화면:**<br>
-    <img src="https://github.com/SuinLee10/SocketProgramming/blob/master/hw1/hw1_result_img/sended_clnt.png" width = 80%><br>
+    <img src="https://github.com/SuinLee10/SocketProgramming/blob/master/hw1/hw1_result_img/sended_clnt.png" width = 45%><br>
 <hr>
 
 ### 6. (2~5) 과정 반복
