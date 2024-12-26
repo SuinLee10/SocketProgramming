@@ -8,7 +8,7 @@
 #include <arpa/inet.h>
 #include <sys/socket.h>
 
-#define BUF_SIZE 30
+#define BUF_SIZE 100
 #define CHAR_SIZE 256
 
 typedef struct{
@@ -64,7 +64,6 @@ int main(int argc, char *argv[]){
         write(sd, str, strlen(str) + 1);
         
         read(sd, &file_size, sizeof(file_size));
-        printf("%d\n", file_size);
         fp = fopen(str, "wb");
         
         recv_size = 0;
@@ -78,7 +77,7 @@ int main(int argc, char *argv[]){
             }fwrite((void*)buf, 1, BUF_SIZE, fp);
             recv_size += read_cnt;
         }
-        
+
         puts("Received file data");
         write(sd, "Thank you", 10);
 

@@ -11,7 +11,7 @@
 #include <sys/stat.h>
 #include <dirent.h>
 
-#define BUF_SIZE 30
+#define BUF_SIZE 100
 
 typedef struct{
     char filename[256];
@@ -72,7 +72,7 @@ int main(int argc, char *argv[]){
                 continue;
 
             packet = realloc(packet, sizeof(pkt_t)*(file_count + 1));
-            //using packet 
+            //using packet
             pkt_t *send_pkt = &packet[file_count];
             memset(send_pkt, 0, sizeof(pkt_t));
             strncpy(send_pkt->filename, entry->d_name, sizeof(send_pkt->filename)-1);
