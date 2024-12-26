@@ -11,7 +11,9 @@
 - **설명:** 서버와 클라이언트는 서버의 포트 번호와 IP 를 통해 서버와 접속합니다.<br>
 - **결과 화면:<br>**
 <p>
+- 서버<br>
 <img src="https://github.com/SuinLee10/SocketProgramming/blob/master/hw1/hw1_result_img/server_method.png" width = 80%><br>
+- 클라이언트<br>
 <img src="https://github.com/SuinLee10/SocketProgramming/blob/master/hw1/hw1_result_img/client_method.png" width = 80%><br>
 </p>
 <hr>
@@ -51,7 +53,9 @@
 ### 6. (2~5) 과정 반복
 - **설명:** 클라이언트가 나가기(Q) 를 선택하기 전까지 위의 과정을 반복합니다.
 - **결과 화면:**<br>
-<img src="https://github.com/SuinLee10/SocketProgramming/blob/master/hw1/hw1_result_img/server_result.png" width = 50%><br>
-<img src="https://github.com/SuinLee10/SocketProgramming/blob/master/hw1/hw1_result_img/client_result.png" width = 50%><br>
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <img src="https://github.com/SuinLee10/SocketProgramming/blob/master/hw1/hw1_result_img/server_result.png" alt="Server Result" style="width: 45%;">
+  <img src="https://github.com/SuinLee10/SocketProgramming/blob/master/hw1/hw1_result_img/client_result.png" alt="Client Result" style="width: 45%;">
+</div>
   <br><hr>
 
